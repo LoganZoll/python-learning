@@ -1,6 +1,6 @@
 # My Python Learning Journey
 
-This repository contains my Python programminSg
+This repository contains my Python programming
 exercises and projects.
 
 ## About Me
