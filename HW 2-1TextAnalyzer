@@ -1,0 +1,15 @@
+sentence = input("Provide a sentence\n")
+print(f"Number of characters {len(sentence)}")
+print(f"Number of characters - ' ' {len(sentence.replace(" ", ""))}")
+print(f"Number of words {len(sentence.split())}")
+count=0;
+for i in sentence.lower():
+    for s in ["a","e","i","o","u"]:
+        if i == s:
+            count+=1
+print(f"Number of vowels {count}")
+print(f"Sentence uppercase {sentence.upper()}")
+print(f"Sentence lowercase {sentence.lower()}")
+print(f"String reversed {sentence[::-1]}")
+print(f"Does the string start with a capital {sentence[0].isupper()}")
+# print(f"Does the string end with punctuaction {sentence[-1].isp}")
