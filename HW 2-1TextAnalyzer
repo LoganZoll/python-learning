@@ -12,4 +12,9 @@ print(f"Sentence uppercase {sentence.upper()}")
 print(f"Sentence lowercase {sentence.lower()}")
 print(f"String reversed {sentence[::-1]}")
 print(f"Does the string start with a capital {sentence[0].isupper()}")
-# print(f"Does the string end with punctuaction {sentence[-1].isp}")
+punctuation = False
+for i in ["!","?","."]:
+    if sentence[-1]==i:
+        punctuation = True
+        break
+print(f"Does the string end with punctuaction {punctuation}")
