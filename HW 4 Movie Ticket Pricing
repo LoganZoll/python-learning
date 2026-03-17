@@ -1,0 +1,31 @@
+age = int(input("Whats your age "))
+matinee = input("Is the showing a matinee Y/N ")
+
+if matinee.upper()=="Y":
+	matinee = True
+
+ticket_price = "$0.00"
+if age<0:
+	print("error age shouldn't be negative")
+elif age<13:
+	if matinee:
+		ticket_price = "$6.00"
+	else:
+		ticket_price = "$8.00"
+elif age<18:
+	if matinee:
+		ticket_price = "$7.00"
+	else:
+		ticket_price = "$10.00"
+elif age<64:
+	if matinee:
+		ticket_price = "$8.00"
+	else:
+		ticket_price = "$13.00"
+else:
+	if matinee:
+		ticket_price = "$8.00"
+	else:
+		ticket_price = "$7.00"
+
+print ("Ticket Price: "+ ticket_price)

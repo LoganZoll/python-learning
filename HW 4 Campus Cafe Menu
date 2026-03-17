@@ -1,0 +1,83 @@
+menu = {
+    1: "Coffee",
+    2: "Sandwich",
+    3: "Salad",
+    4: "Combo",
+    5: "Exit"
+}
+
+prices = {
+    "Coffee": 3.50,
+    "Sandwich": 6.00,
+    "Salad": 5.50,
+    "Combo": 8.00
+}
+
+coffee_sizes = {"small": 0, "medium": 1.0, "large": 2.0}
+salad_dressings = ["ranch", "italian", "vinaigrette", "none"]
+
+choice = int(input("Enter your choice (1-5): "))
+if choice == 5:
+    print("Exiting...")
+    exit()
+
+name = input("Enter your name: ").strip()
+
+quantity = input("How many? ")
+try:
+    quantity = int(quantity)
+    if quantity <= 0:
+        raise ValueError
+except ValueError:
+    print("Invalid number. Set to 1")
+    quantity = 1
+
+item_total = 0
+item_desc = ""
+
+if choice == 1:  # Coffee
+    size = input("Coffee size (small/medium/large): ").lower()
+    if size not in coffee_sizes:
+        print("Invalid size. Small chosen.")
+        size = "small"
+    item_total = prices["Coffee"] + coffee_sizes[size]
+    item_desc = f"Coffee ({size.capitalize()})"
+
+elif choice == 2:  # Sandwich
+    cheese = input("Add cheese? (yes/no): ").lower()
+    item_total = prices["Sandwich"] + (0.75 if cheese == "yes" else 0)
+    item_desc = f"Sandwich{' + Cheese' if cheese == 'yes' else ''}"
+
+elif choice == 3:  # Salad
+    dressing = input("Choose dressing (ranch/italian/vinaigrette/none): ").lower()
+    if dressing not in salad_dressings:
+        print("Invalid dressing. None put on.")
+        dressing = "none"
+    item_total = prices["Salad"]
+    item_desc = f"Salad ({dressing.capitalize()})"
+
+elif choice == 4:  # Combo
+    size = input("Coffee size (small/medium/large): ").lower()
+    if size not in coffee_sizes:
+        print("Invalid size. Defaulting to Small.")
+        size = "small"
+    cheese = input("Add cheese? (yes/no): ").lower()
+    item_total = prices["Combo"] + coffee_sizes[size] + (0.75 if cheese == "yes" else 0)
+    item_desc = f"Combo (Coffee {size.capitalize()}, {'Cheese' if cheese=='yes' else 'No Cheese'})"
+
+subtotal = item_total * quantity
+tax = subtotal * 0.07
+total = subtotal + tax
+
+print("==============================")
+print("ORDER RECEIPT")
+print("==============================")
+print(f"Customer: {name}")
+print(f"Item: {item_desc}")
+print(f"Quantity: {quantity}")
+print(f"Unit Price: ${item_total:.2f}")
+print(f"Subtotal: ${subtotal:.2f}")
+print(f"Tax (7%): ${tax:.2f}")
+print(f"Total: ${total:.2f}")
+print("==============================")
+print("Thank you for your order!")

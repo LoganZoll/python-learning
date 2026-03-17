@@ -1,0 +1,37 @@
+student_id = input("Enter student ID: ")
+name = input("Enter full name: ")
+age_input = input("Enter age: ")
+major = input("Enter major: ")
+
+errors = []
+
+if len(student_id) != 8:
+    errors.append(f"- Student ID must be exactly 8 characters (got {len(student_id)})")
+if not student_id[0].isalpha():
+    errors.append("- Student ID must start with a letter")
+if not student_id[1:].isdigit():
+    errors.append("- Student ID must have all digits after the first letter")
+
+if len(name.strip()) < 2:
+    errors.append("- Name cannot be less than 2 characters")
+
+try:
+    age = int(age_input)
+    if age < 16 or age > 99:
+        errors.append(f"- Age must be between 16 and 99 (got {age})")
+except ValueError:
+	errors.append(" - Age must be a valid integer")
+
+if major.upper() not in ["CS", "IT", "CE", "DS"]:
+    errors.append(f"- Major must be one of: CS, IT, CE, DS (got "+major+")")
+
+if errors:
+    print("Profile has errors:")
+    for err in errors:
+        print(err)
+else:
+    print("Profile created successfully!")
+    print(f"Student ID: {student_id}")
+    print(f"Name: {name}")
+    print(f"Age: {age}")
+    print(f"Major: {major.upper()}")
